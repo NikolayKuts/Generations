@@ -8,7 +8,7 @@ import androidx.fragment.app.DialogFragment
 import com.example.generations.R
 import java.util.*
 
-class DatePickerFragment(private val callback: (year: Int, moth: Int, day: Int) -> Unit) :
+class DatePickerFragment(private val callback: (year: Int, month: Int, day: Int) -> Unit) :
     DialogFragment(), DatePickerDialog.OnDateSetListener {
 
     private companion object {
