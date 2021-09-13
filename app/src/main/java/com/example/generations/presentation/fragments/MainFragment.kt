@@ -4,9 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import com.example.generations.databinding.FragmentMainBinding
 import com.example.generations.domain.pojo.DateConverter
+import com.example.generations.presentation.auxiliary.InputDateAssistant
 
 class MainFragment : Fragment() {
 
@@ -24,11 +26,24 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.dateInputEditTextWrapper.setStartIconOnClickListener { 
-            DatePickerFragment() { year, month, day ->
-                val date = DateConverter(year = year,month = month, day = day).getDateAsString()
+        with(binding) {
+            dateInputEditTextWrapper.setStartIconOnClickListener {
+                DatePickerFragment() { year, month, day ->
+                    val date =
+                        DateConverter(year = year, month = month, day = day).getDateAsString()
+                }
+            }
+
+            val assistant = InputDateAssistant(
+                editText = dateInputEditText,
+                editTextWrapper = dateInputEditTextWrapper
+            )
+
+            dateInputEditText.doOnTextChanged { text, start, before, count ->
+                assistant.validate(text)
             }
         }
+
     }
 
     override fun onDestroy() {
