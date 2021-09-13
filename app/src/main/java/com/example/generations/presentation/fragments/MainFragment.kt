@@ -21,6 +21,15 @@ class MainFragment : Fragment() {
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.dateInputEditTextWrapper.setStartIconOnClickListener { 
+            DatePickerFragment() { year, moth, day ->  
+                
+            }
+        }
+    }
+
     override fun onDestroy() {
         super.onDestroy()
         _binding = null

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="MyDatePicker" parent="android:Widget.Material.DatePicker">
+        <item name="android:datePickerMode">spinner</item>
+        <item name="android:calendarViewShown">false</item>
+    </style>
+
+    <style name="DatePickerTheme.ButtonBarNegativeButtonStyle"
+        parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+        <item name="android:textColor">@color/cancel</item>
+    </style>
+
+    <style name="DatePickerTheme.ButtonBarPositiveButtonStyle"
+        parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+        <item name="android:textColor">@color/confirm</item>
+    </style>
+
+</resources>

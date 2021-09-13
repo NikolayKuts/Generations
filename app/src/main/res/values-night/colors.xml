@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="cancel">#CD726C</color>
+    <color name="confirm">confirm</color>
+</resources>
