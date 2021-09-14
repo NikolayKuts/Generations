@@ -1,5 +1,6 @@
 package com.example.generations.presentation.fragments
 
+import android.content.Context
 import android.content.res.Configuration
 import android.os.Bundle
 import android.view.Gravity
@@ -10,6 +11,7 @@ import android.widget.Toast
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import com.example.generations.R
 import com.example.generations.databinding.FragmentMainBinding
 import com.example.generations.domain.pojo.DateConverter
 import com.example.generations.domain.pojo.Generation
@@ -46,18 +48,17 @@ class MainFragment : Fragment() {
                 }
             }
 
-            dateInputEditTextWrapper.setStartIconOnClickListener { onStartIconClick() }
+            inputDateEditTextWrapper.setStartIconOnClickListener { onStartIconClick() }
 
             val assistant = InputDateAssistant(
-                editText = dateInputEditText,
-                editTextWrapper = dateInputEditTextWrapper
+                editText = inputDateEditText,
+                editTextWrapper = inputDateEditTextWrapper
             )
 
-            dateInputEditText.doOnTextChanged { text, _, _, _ -> assistant.validate(text) }
+            inputDateEditText.doOnTextChanged { text, _, _, _ -> assistant.validate(text) }
 
             showButton.setOnClickListener { onShowButtonClick(assistant = assistant) }
         }
-
     }
 
     override fun onDestroy() {
@@ -66,40 +67,43 @@ class MainFragment : Fragment() {
     }
 
     private fun onStartIconClick() {
-        val datePicker = DatePickerFragment { year, month, day ->
-            val date = DateConverter(year = year, month = month, day = day).getDateAsString()
-            binding.dateInputEditText.setText(date)
+        with(binding) {
+            val datePicker = DatePickerFragment { year, month, day ->
+                val date = DateConverter(year = year, month = month, day = day).getDateAsString()
+                inputDateEditText.setText(date)
+                inputDateEditText.setSelection(inputDateEditText.length())
+            }
+            datePicker.show(childFragmentManager, DATE_PICKER_TAG)
         }
-        datePicker.show(childFragmentManager, DATE_PICKER_TAG)
     }
 
     private fun onShowButtonClick(assistant: InputDateAssistant) {
-        val date = binding.dateInputEditText.text.toString()
+        val date = binding.inputDateEditText.text.toString()
+        val context = binding.inputDateEditText.context
         if (assistant.isResultValidated(date)) {
             val year = date.substring(6, 10).toInt()
             val result = GenerationDescriptionProvider(year = year).getDescription()
+
             if (result != GenerationDescriptionProvider.EMPTY) {
                 viewModel.insertGeneration(Generation(name = result))
             } else {
-                viewModel.insertGeneration(Generation(name = "Impossible to calculate the generation"))
+                showToast(context = context, messageId = R.string.impossible_calculation_message)
             }
         } else {
-            showToast()
+            showToast(context = context, messageId = R.string.no_completed_date_typing)
         }
     }
 
-    private fun showToast() {
-        val message = "The date must be typed in completely"
-        if (context!= null) {
-            val orientation = context?.resources?.configuration?.orientation
-            if (orientation != Configuration.ORIENTATION_LANDSCAPE) {
-                Toast.makeText(context, message + "error", Toast.LENGTH_SHORT).apply {
-                    setGravity(Gravity.CENTER, 0, 0)
-                    show()
-                }
-            } else {
-                Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+    private fun showToast(context: Context, messageId: Int) {
+        val orientation = context.resources.configuration.orientation
+        val message = context.resources.getString(messageId)
+        if (orientation != Configuration.ORIENTATION_LANDSCAPE) {
+            Toast.makeText(context, message, Toast.LENGTH_SHORT).apply {
+                setGravity(Gravity.CENTER, 0, 0)
+                show()
             }
+        } else {
+            Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
         }
     }
 }
