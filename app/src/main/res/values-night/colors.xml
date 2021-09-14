@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="cancel">#CD726C</color>
-    <color name="confirm">confirm</color>
+    <color name="confirm">#EFEFEF</color>
+    <color name="green_validated">#6FC172</color>
+    <color name="helper_text_color">#66A1D2</color>
+    <color name="hint_text_color">#DA9578</color>
+    <color name="inactive">#707070</color>
+    <color name="start_icon_focused">#66A1D2</color>
+    <color name="text_result_color">#E2AB5A</color>
+    <color name="app_background">#3C3C3C</color>
+    <color name="primary">#E2AB5A</color>
+    <color name="primary_variant">#AF7B32</color>
+    <color name="on_primary">#3C3C3C</color>
 </resources>

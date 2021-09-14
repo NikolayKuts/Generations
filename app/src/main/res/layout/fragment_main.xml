@@ -5,6 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".presentation.fragments.MainFragment"
+    android:background="@color/app_background"
     >
 
     <com.google.android.material.textfield.TextInputLayout
@@ -12,34 +13,34 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="dd/mm/yyyy"
+        android:hint="@string/date_hint"
         app:startIconDrawable="@drawable/ic_calendar_24"
+        app:startIconTint="@color/start_icon_color"
         app:errorEnabled="true"
         app:errorIconDrawable="@drawable/ic_error_24"
-        app:helperText="type the birth date"
-        app:helperTextTextColor="#00BCD4"
+        app:helperText="@string/helper_text"
+        app:hintTextColor="@color/hint_text_color"
         app:endIconMode="clear_text"
         app:boxBackgroundColor="@android:color/transparent"
         app:boxBackgroundMode="outline"
-
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.24"
+        app:layout_constraintVertical_bias="0.4"
         >
 
         <EditText
             android:id="@+id/date_input_edit_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:minWidth="250dp"
+            android:autofillHints="no"
             android:ems="10"
             android:inputType="date"
-            android:textColor="#3F51B5"
-            android:textColorHint="#8A9EE3EC"
+            android:minWidth="300dp"
             android:textCursorDrawable="@null"
+            tools:ignore="LabelFor"
             />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -49,7 +50,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="show"
+        android:text="@string/show"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/date_input_edit_text_wrapper"
@@ -59,11 +60,18 @@
         android:id="@+id/result_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:paddingStart="15dp"
+        android:paddingTop="5dp"
+        android:paddingEnd="15dp"
+        android:paddingBottom="5dp"
+        android:textColor="@color/text_result_color"
+        android:textSize="25sp"
+        android:fontFamily="@font/averia_gruesa_libre"
+        app:layout_constraintBottom_toTopOf="@+id/date_input_edit_text_wrapper"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/show_button"
-        app:layout_constraintVertical_bias="0.2" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="result is here" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
