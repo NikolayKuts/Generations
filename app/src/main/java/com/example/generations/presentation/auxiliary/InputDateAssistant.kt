@@ -1,6 +1,8 @@
 package com.example.generations.presentation.auxiliary
 
 import android.widget.EditText
+import androidx.core.content.ContextCompat
+import com.example.generations.R
 import com.google.android.material.textfield.TextInputLayout
 
 class InputDateAssistant(
@@ -47,6 +49,8 @@ class InputDateAssistant(
         private const val SLASH = "/"
         private const val ZERO = "0"
     }
+
+    fun isResultValidated(result: String): Boolean = (Regex(FULL_DATE_PATTERN).matches(result))
 
     fun validate(text: CharSequence?) {
         date = text?.toString()?.trim() ?: ""
@@ -285,12 +289,12 @@ class InputDateAssistant(
     }
 
     private fun onIfNotWarned() {
-        editTextWrapper.error = null
         if (date.length <= 2) {
             isSlashAdded = false
         } else if (!date.substring(3).contains(Regex(SPLITTER_PATTERN))) {
             isSlashAdded = false
         }
+        editTextWrapper.error = null
         lastText = date
     }
 

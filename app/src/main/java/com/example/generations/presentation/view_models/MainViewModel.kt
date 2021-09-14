@@ -20,7 +20,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
 
-    fun insetDateContainer(generation: Generation) {
+    fun insertGeneration(generation: Generation) {
         viewModelScope.launch { repository.insertGeneration(generation) }
     }
 }
