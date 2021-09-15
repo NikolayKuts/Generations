@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="impossible_calculation_message">Невозможно подсчитать поколение</string>
+    <string name="no_completed_date_typing">Дата должна быть введена полностью</string>
+    <string name="beginning_with_symbol_warning">дата должна начинаться с цифры</string>
+    <string name="day_format_warning">день должен выглядеть как \"02\" или \"6\"</string>
+    <string name="nullable_day_warning">день не может быть нулевым</string>
+    <string name="absent_day_warning">нет такого дня в месяце</string>
+    <string name="type_month_warning">введите месяц</string>
+    <string name="month_format_warning">месяц должен выглядеть как \"02\" или \"6\"</string>
+    <string name="nullable_month_warning">месяц не может быть нулевым</string>
+    <string name="absent_month_warning">нет такого месяца в году</string>
+    <string name="type_year_warning">введите год</string>
+    <string name="year_begins_from_zero_warning">год не может начинаться с \"0\"</string>
+    <string name="no_required_symbol_warning">символ не требуется</string>
+    <string name="no_existing_year_warning">введите существующий год</string>
+    <string name="excess_digits_in_year_warning">год не может содержать более четырех цифр</string>
+    <string name="date_hint">дд/мм/гггг</string>
+    <string name="show">показать</string>
+    <string name="helper_text">введите полную дату рождения</string>
+</resources>

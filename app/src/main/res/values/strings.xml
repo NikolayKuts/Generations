@@ -1,20 +1,20 @@
 <resources>
-    <string name="app_name">Generations</string>
+    <string name="app_name" translatable="false">Generations</string>
     <string name="impossible_calculation_message">"Impossible to calculate the generation"</string>
     <string name="no_completed_date_typing">The date must be typed in completely</string>
     <string name="beginning_with_symbol_warning">the date must begin with a digit</string>
-    <string name="day_format_warning">the day must look like: \"02\" or \"6\"</string>
+    <string name="day_format_warning">the day must look like  \"02\" or \"6\"</string>
     <string name="nullable_day_warning">the day can\'t be nullable</string>
     <string name="absent_day_warning">no such day in a month</string>
-    <string name="type_month_warning">type the month</string>
-    <string name="month_format_warning">the month must look like: \"02\" or \"6\"</string>
+    <string name="type_month_warning">нет такого дня в месяце</string>
+    <string name="month_format_warning">the month must look like \"02\" or \"6\"</string>
     <string name="nullable_month_warning">the month can\'t be nullable</string>
     <string name="absent_month_warning">no such month in a year</string>
     <string name="type_year_warning">type the year</string>
     <string name="year_begins_from_zero_warning">the year can\'t begin from \"0\"</string>
     <string name="no_required_symbol_warning">no symbol is required</string>
     <string name="no_existing_year_warning">type existing year</string>
-    <string name="excess_digits_in_year_warning">the year can\' have more than four digits</string>
+    <string name="excess_digits_in_year_warning">the year can\'t have more than four digits</string>
     <string name="date_hint">dd/mm/yyyy</string>
     <string name="show">show</string>
     <string name="helper_text">type the full birth date</string>
